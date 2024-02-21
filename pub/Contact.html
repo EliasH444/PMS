@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book</title>
+    <style>
+        /* Add your CSS styles here */
+        /* For demonstration, I'll add some basic styles */
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .topnav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .topnav a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .topnav input[type=text] {
+            float: right;
+            padding: 6px;
+            margin-top: 8px;
+            margin-right: 16px;
+            border: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label, input, textarea {
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            height: 150px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: #f2f2f2;
+        }
+        footer a {
+            color: #f2f2f2;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Boos</h1>
+    <div class="topnav">
+        <a href="Home.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="Contact.html">Contact</a>
+        <a href="login.ejs">Sign Up</a>
+        <a href="register.ejs">Sign Up</a>
+        <input type="text" placeholder="Search..">
+    </div>
+
+    
+
+    
+        <div class="container">
+            <h1>Contact Us</h1>
+            <form action="/submit_contact_form" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+    
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+    
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+    
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    
+
+    <footer>
+        <hr>
+        <p>Author: Elias</p>
+        <p>&copy; Copyright Reserved</p>
+        <p><small><a href="mailto:eliasH444@outlook.com">eliasH444@outlook.com</a></small></p>
+    </footer>
+</body>
+</html>

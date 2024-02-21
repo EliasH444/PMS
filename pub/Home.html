@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Workify</title>
+    <style>
+        /* Basic styles for the navigation bar */
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .topnav a {
+            font-family: Arial, sans-serif;
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .topnav a.active {
+            
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .topnav input[type=text] {
+            float: right;
+            padding: 6px;
+            margin-top: 8px;
+            margin-right: 16px;
+            border: none;
+        }
+
+        /* Styles for the table */
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Styles for the button */
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: #f2f2f2;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: #f2f2f2;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Workify</h1>
+    <div class="topnav">
+        <a href="Home.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="Contact.html">Contact</a>
+        <a href="login.ejs">Sign Up</a>
+        <a href="register.ejs">Sign Up</a>
+        <input type="text" placeholder="Search..">
+    </div>
+
+    <h2>Project List</h2>
+
+    <table id="myTable">
+        <tr>
+            <th width="10">Task ID</th>
+            <th width="250">Project Description</th>
+            <th width="100">Status</th>
+            <th width="200">Assigned</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Complete UML case diagram</td>
+            <td>Ongoing</td>
+            <td>Elias Hassan</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Produce a prototype</td>
+            <td>Ongoing</td>
+            <td>Bob</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Implement save button</td>
+            <td>Ongoing</td>
+            <td>Michael</td>
+        </tr>
+    </table>
+
+    <button onclick="addRow()">Add Project</button>
+
+    <script>
+        let rowCount = 3; // Starting from the existing row count
+
+        function addRow() {
+            var table = document.getElementById("myTable");
+            var row = table.insertRow(-1);
+
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+
+            cell1.innerHTML = '<input type="text" placeholder="Task ID" id="taskID' + rowCount + '">';
+            cell2.innerHTML = '<input type="text" placeholder="Project Description" id="projectDesc' + rowCount + '">';
+            cell3.innerHTML = '<input type="text" placeholder="Status" id="status' + rowCount + '">';
+            cell4.innerHTML = '<input type="text" placeholder="Assigned" id="assigned' + rowCount + '">';
+        }
+
+        function saveData() {
+            var data = [];
+
+            for (var i = 1; i <= rowCount; i++) {
+                var taskID = document.getElementById('taskID' + i).value;
+                var projectDesc = document.getElementById('projectDesc' + i).value;
+                var status = document.getElementById('status' + i).value;
+                var assigned = document.getElementById('assigned' + i).value;
+
+                var row = {
+                    taskID: taskID,
+                    projectDesc: projectDesc,
+                    status: status,
+                    assigned: assigned
+                };
+
+                data.push(row);
+            }
+
+            // Display the collected data (for demonstration purposes)
+            console.log(data);
+            alert('Data saved! Check the console for details.');
+        }
+    </script>
+
+    <button onclick="saveData()">Save Data</button>
+
+    <footer>
+        <hr>
+        <p>Author: Elias</p>
+        <p>&copy; Copyright Reserved</p>
+        <p><small><a href="mailto:eliasH444@outlook.com">eliasH444@outlook.com</a></small></p>
+    </footer>
+</body>
+</html>
