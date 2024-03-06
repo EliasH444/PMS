@@ -19,6 +19,14 @@ mongoose.connect("mongodb://localhost:27017/myDatabase")
     }
 })
 
-const collection = new mongoose.model("Collection1", logInSchema)
+const projectSchema = new mongoose.Schema({
+  taskID: Number,
+  projectDesc: String,
+  status: String,
+  assigned: String
+});
+const Project = mongoose.model('Project', projectSchema);
 
-module.exports= collection
+const collection1 = new mongoose.model("Collection1", logInSchema)
+
+module.exports =  collection1

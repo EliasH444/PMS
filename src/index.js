@@ -11,7 +11,7 @@ app.set("view engine", "hbs")
 app.set("views", tempelatePath)
 //this lign changes the views name to
 
-
+app.use(express.urlencoded({extended:false}))
 app.get('/signup', (req, res) => {
     res.render('signup')
 })
@@ -25,20 +25,51 @@ app.listen(port, () => {
 })
 
 app.post('/signup', async (req, res) => {
-    
-    // const data = new LogInCollection({
-    //     name: req.body.name,
-    //     password: req.body.password
-    // })
-    // await data.save()
+    try {
+        const userData = {
+            name: req.body.name,
+            password: req.body.password
+        };
 
-    const data = {
-        name: req.body.name,
-        password: req.body.password
+        await collection.insertMany([userData]);
+
+        res.render("home");
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Internal Server Error');
     }
+});
 
-    await collection.insertMany([data])
+app.post('/login', async (req, res) => {
+    try {
+        const check = await collection.findOne({name:req.body.name})
 
-    res.render("home")
+        if(check.password == req.body.password){
+            res.render("home")
+        }else{
+            res.send("wrong password")
+        }
 
-})
+        
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Wrong Username or Passowrd');
+    }
+});
+app.post('/addProject', async (req, res) => {
+    try {
+        const userProjects = {
+            taskID: req.body.taskID,
+            projectDesc: req.body.projectDesc,
+            status: req.body.status,
+            assigned: req.body.assigned
+        };
+
+        await Project.insertMany([userProjects]);
+
+        res.render("home");
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
